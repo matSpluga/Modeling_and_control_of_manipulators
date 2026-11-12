@@ -1,0 +1,7 @@
+\usepackage{parskip}		per lasciare spazi fra paragrafi semplicemente andando a capo.
+\usepackage[fleqn]{amsmath}	per spostare equazioni e matrici a sinistra in automatico (poi 				all'interno delle matrici alla prima riga scrivi 					\hspace{-2em}).
+\usepackage{caption}
+\usepackage{subcaption}		Entrambi per inserire didascalie alle immagini semplicemente 				scrivendo \caption o \subcaption sotto alla riga in cui si 				inserisce l'immagine.
+\usepackage{float}		Per avere posizionamento preciso di immagini.
+
+\usepackage{titlesec}  		Per modificare la grandezza dei titoli delle subsections o 				sections.

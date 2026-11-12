@@ -1,0 +1,870 @@
+Delivered-To: matte.kraft@gmail.com
+Received: by 2002:a05:6674:b82:b0:67f:e023:913b with SMTP id pk2csp1685455pxc;
+        Mon, 3 Nov 2025 10:33:53 -0800 (PST)
+X-Forwarded-Encrypted: i=5; AJvYcCWlwo/SCxF5k5gIYy/mVzDvt70XB+NlzfuOb/819lRV9y5U4clkJcCIcGMPA3o3Jgy01vMsjZcGeR8tew==@gmail.com
+X-Google-Smtp-Source: AGHT+IHy972nki+l3gn/ifdgZTV3BM4iCVyUjPJX5udwr8PMQWWyVTMPhXeHSvBZgtw/qAXd6g5y
+X-Received: by 2002:a05:6402:510c:b0:63e:209b:a958 with SMTP id 4fb4d7f45d1cf-64077015d1bmr12361686a12.17.1762194833090;
+        Mon, 03 Nov 2025 10:33:53 -0800 (PST)
+ARC-Seal: i=4; a=rsa-sha256; t=1762194833; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=V2FFSmcf1IjqU0K4v5X+kqi5WZdhIl4/GFe2TBswfAEax6nFxgeXG90tA6uOVjtswL
+         +bIwLAI+G1yMOtoEg0wyx1NZ/CjVdW81MFKiFE37yDo6glgouxWVEnWthYbINXdHWidx
+         IZg2YOhPMBfM/SEePHG76Omy8uPF7/Y1oJf5OM3uaQW0QPFt94QRogL60DBAOcqfIp/f
+         AGK/yjnN55tHHBQC2yhdcKgGN5VPe0YqYLqjnPP7vixCDF2C8yHgHfn/fdnm9/Y2VaVV
+         v2mcL39w8DwyPA+rxcW991XMkKW8+cbQ76ln1yWt5vJBtqKDl5zGww2gbYJji0fV1/4Q
+         cF1Q==
+ARC-Message-Signature: i=4; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=from:cc:mime-version:sender:reply-to:to:message-id:subject:date
+         :dkim-signature:dkim-signature;
+        bh=X66Ej+pxtsvV5dJ4A7rcMCuS5rbALD9VKMSjAorD114=;
+        fh=C8uPQUReTAc/gt99cWt/HsRc2uvazOk9OMRZI8AB7YY=;
+        b=PTIA8w9CXrHlZLFZBuEA9TJoKzroXmPG+eMnzh2XRDbrQehB7YnJ8k3ccCg9MdOFcN
+         CTqUA84xz1EY1ggTzi3c+rF9SZnX96MD5M8KYLQMApVSr7XNA9JPKdnY8/Q6glIKJXpG
+         yUlRnYINnk9tBeS6XRymyTSJeJeroHMvGAZe0T42KA5PWmdY1GrRHecwdC7HjQqE/Zsi
+         dh4fk1zbZfX/r9VxvZ2ayC9VM0QzurRLfFYGAfUKMll3obOCNrNb+yCYAErCqWTkjJyA
+         Qz0ZV6J4ip1vnQCXcfhGeFSSrGRvZT/Iu8j4rsmsrO1Ev+r2TZRKonZi0m+jY8+s1Qfv
+         QK/Q==;
+        dara=google.com
+ARC-Authentication-Results: i=4; mx.google.com;
+       dkim=pass header.i=@spoemeaeop.onmicrosoft.com header.s=selector1-spoemeaeop-onmicrosoft-com header.b="U5QIh//D";
+       dkim=pass header.i=@sharepointonline.com header.s=selector1 header.b=GWDANyaI;
+       arc=pass (i=3 spf=pass spfdomain=sharepointonline.com dkim=pass dkdomain=spoemeaeop.onmicrosoft.com dkim=pass dkdomain=sharepointonline.com dmarc=pass fromdomain=sharepointonline.com);
+       spf=pass (google.com: domain of srs0=hcbv=5l=sharepointonline.com=no-reply@unige.it designates 130.251.222.102 as permitted sender) smtp.mailfrom="SRS0=hcbV=5L=sharepointonline.com=no-reply@unige.it";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sharepointonline.com
+Return-Path: <SRS0=hcbV=5L=sharepointonline.com=no-reply@unige.it>
+Received: from smtp.unige.it (vm-smtp2.ker.csita.unige.it. [130.251.222.102])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-6407b362382si5380419a12.44.2025.11.03.10.33.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Nov 2025 10:33:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=hcbv=5l=sharepointonline.com=no-reply@unige.it designates 130.251.222.102 as permitted sender) client-ip=130.251.222.102;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@spoemeaeop.onmicrosoft.com header.s=selector1-spoemeaeop-onmicrosoft-com header.b="U5QIh//D";
+       dkim=pass header.i=@sharepointonline.com header.s=selector1 header.b=GWDANyaI;
+       arc=pass (i=3 spf=pass spfdomain=sharepointonline.com dkim=pass dkdomain=spoemeaeop.onmicrosoft.com dkim=pass dkdomain=sharepointonline.com dmarc=pass fromdomain=sharepointonline.com);
+       spf=pass (google.com: domain of srs0=hcbv=5l=sharepointonline.com=no-reply@unige.it designates 130.251.222.102 as permitted sender) smtp.mailfrom="SRS0=hcbV=5L=sharepointonline.com=no-reply@unige.it";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sharepointonline.com
+ARC-Seal: i=3; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
+ b=HnI91g+cYQE3JPRr66IVSGWwxTbFfv2pl70g7HHS6ozbnwCeAemFXFf4DfJgHH8cKfznT16oDMAbGaMOh6xJmhPPetiZY/xEder1HXfhMAavWP0ECp15rebvXozLD3Ay84NGFUoXfhOeEOXuQyeHXag8N7gdVOF9St/eRVfjDSWmW4b2oRreJ6raswiOj9+pYRP+64A/jXBZR95IgbwmnGtBUSN1UZO7Gs3OuNeHJ5mLOn+HjSgexFHQbEVSg7kpN71cSlmkWgH11FqfvUbYuHv4TjVxRfwHSS40qXogSJioY44NfZGiJyMs6+sdqdI7SUEfKkRxJRgfdDBGJMEJCQ==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=X66Ej+pxtsvV5dJ4A7rcMCuS5rbALD9VKMSjAorD114=;
+ b=P+B8ItGvaOhzE+l9a/JMSnZY0KffVx3Kb/8ncL+fQr8AcvOYDXkm51+p/xefpZL2PQNdXYmLofaEqMRzcAS3KZpEagpuyiY/6+GAATuRn+2xqUnST9qw/FcNCu4q5QEuMBfrey3NzjpgsRi/1niNNkUHB8XO80hOAl3ibBsALD3+xmWzO9gA5qwI2RAwOC+3zv5kG47kj3I58/4K3x89VyfWGYRa5zsTz7YfiHUH0fiLgx67Z4uCzmpD7UAdh6LfAO2P12J0zlj26nn6DOOZ5CnQyXUokR190s7YQGk6aDCq8cSihAINS2NytR2PYzgNcRBOuqLgPP0ZCY+N22flwQ==
+ARC-Authentication-Results: i=3; mx.microsoft.com 1; spf=pass (sender ip is
+ 2a01:111:f403:c20f::7) smtp.rcpttodomain=studenti.unige.it
+ smtp.mailfrom=sharepointonline.com; dmarc=pass (p=reject sp=reject pct=100)
+ action=none header.from=sharepointonline.com; dkim=pass (signature was
+ verified) header.d=spoemeaeop.onmicrosoft.com; dkim=pass (signature was
+ verified) header.d=sharepointonline.com; arc=pass (0 oda=0 ltdi=1)
+ARC-Seal: i=2; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
+ b=AJqQB/BCfYmEdldBJ26qNLRjPI/QhJaYcF4Yz7Dejp5wj+6hX3m8Npt8T/V/ZZiwa1N+5gZF8MSuThWbhGRbd6hJrVvFmQY4mJH5IIEmjcgB2xiFjEvzZAgVgP19qCfdVPv1bLs9Fgj70rp36nuDhIY/5wFFy5+KXQu4wYvpVc0H4HUzlkuVibFjETXXEThO3X0ml30hnjLnQsXq0D35H4lWRbsPerulG6rC1+b1qFl2Q2P/QVxx9zCuve/OzQ31ew7gRC/j/dG49ASFhqmkeLvLDp+a4/Ueg2/v/4+0yNYCMheqFnXX6nTJ6IbetQUvmfifDKnWw+f2poMkovqPJg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=X66Ej+pxtsvV5dJ4A7rcMCuS5rbALD9VKMSjAorD114=;
+ b=tKhudYIriUTk7ZGBFP3a7vQPuSBbI07K7wt7jRilAXC80zbZYBbDM8cStOAR+8tY6Qd7V2IhpRLVBf1eCJtDek+jLiHGIiTjHculLjjMK6VrvUHcKSr5GbAIskT4AH3iJUwZny9YPvNCEk3naMg77cVpt+c0qwqkXzvmU9KzzXOXoLwAeoxYSzyhKlFos8leA5FMM/CFvKbcI4xIt3fz2PXmEKGejBz2oRDwnTNiOwGzHE+WrDxl2CWWss2x7j6DUb7UzAUpAkwmqMMD3V0RR3mcmV0Y5CT2WqrwhwsnW4hW44CYyN9H4e+rHEz3FUzACLOkNS2g/qMjsbTcd+mvvw==
+ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
+ 2a01:111:f403:c20f::7) smtp.rcpttodomain=studenti.unige.it
+ smtp.mailfrom=sharepointonline.com; dmarc=pass (p=reject sp=reject pct=100)
+ action=none header.from=sharepointonline.com; dkim=pass (signature was
+ verified) header.d=spoemeaeop.onmicrosoft.com; dkim=pass (signature was
+ verified) header.d=sharepointonline.com; arc=pass (0 oda=0 ltdi=1)
+Received: from DUZPR01CA0009.eurprd01.prod.exchangelabs.com
+ (2603:10a6:10:3c3::16) by AS2PR03MB10194.eurprd03.prod.outlook.com
+ (2603:10a6:20b:5fc::17) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.16; Mon, 3 Nov
+ 2025 18:33:47 +0000
+Received: from DU6PEPF00009529.eurprd02.prod.outlook.com
+ (2603:10a6:10:3c3:cafe::46) by DUZPR01CA0009.outlook.office365.com
+ (2603:10a6:10:3c3::16) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9275.16 via Frontend Transport; Mon,
+ 3 Nov 2025 18:33:57 +0000
+Authentication-Results: spf=pass (sender IP is 2a01:111:f403:c20f::7)
+ smtp.mailfrom=sharepointonline.com; dkim=pass (signature was verified)
+ header.d=spoemeaeop.onmicrosoft.com;dkim=pass (signature was verified)
+ header.d=sharepointonline.com;dmarc=pass action=none
+ header.from=sharepointonline.com;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of sharepointonline.com
+ designates 2a01:111:f403:c20f::7 as permitted sender)
+ receiver=protection.outlook.com; client-ip=2a01:111:f403:c20f::7;
+ helo=OSPPR02CU001.outbound.protection.outlook.com; pr=C
+Received: from OSPPR02CU001.outbound.protection.outlook.com
+ (2a01:111:f403:c20f::7) by DU6PEPF00009529.mail.protection.outlook.com
+ (2603:10a6:18:3::a) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9298.6 via Frontend Transport; Mon, 3
+ Nov 2025 18:33:46 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=S/i07BcmntD+GZjOKvM3NFGBkZ2lWdHmZjpb7uhnBsai05J2P83FhN0jmOvvqYGXpYKUec6bWohkPzT/vW2wb/Yom/N56g0UZvCEnZgMOCbNTfde5fvmzwkFN3uSL4Z3RKmnUpqTWbzJg3ijItnFB9Dat2k8+yeIKoLhaSucqR4yXhXHxvFIccPb7Yi1EPr0I8W/vmojpJbw/pXYDZdjFFi3suOIEjOJPCyo1nPZ2WnnTS22NO0ErMyIgvcbYeFOkrQgzqUvbRndGwmjptL1I8/LCJV/ZfokO+sQKhR5ew0+D89sDF1a6GJHJu5vJmJBGUe+xQ3GYDwS35L36O47kQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=X66Ej+pxtsvV5dJ4A7rcMCuS5rbALD9VKMSjAorD114=;
+ b=KmaEULFkViPkwCCSn8EGaUmjLozS2e7CDJn9ii6RABx3cfhCUJvuBg7i6RvamARZ7mpgTNnkeERqmFYi5G/6RUyKcpDM9jpo1dfDXLKFGCBqVsLXzw8Hj+DUlbMhoY37vV54wLIHWneYWhXS4+Zpyk6OvLW+b4CRwjIX1EqlvIpoGBaddkoLLfKOCPVgDjpzYgqlRYlmJW9iWhvk3iU3kmKMZ+a1BNi9WkAwRJ3HQQRh79zh2zDIPb9wSouG531BJelqOX5JqPpY5rzjOBpNzkwwA569ywkA4EV7frmt5cSQ5Cu/1oFJ8ciDDvoxJJLgnIGssLdrYuNLoXDNxOrmog==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none
+ action=none header.from=sharepointonline.com; dkim=none (message not signed);
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=spoemeaeop.onmicrosoft.com; s=selector1-spoemeaeop-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=X66Ej+pxtsvV5dJ4A7rcMCuS5rbALD9VKMSjAorD114=;
+ b=U5QIh//D3jHL2C6p9iR8//8T67lJG43K78l7G3Td1yYO0Vzi40wjkDLeMOK4DIHW7Hh+FUjwT7ZMRv/r3yccwFcnz0UxxU09nzm9/WhMAOm5xmOMP8DpoJIN/Ho9IZUU7D/4ue+utO+NAOESlQ0mY5apDmCP9K6TrsJM8IZUtF4=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sharepointonline.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=X66Ej+pxtsvV5dJ4A7rcMCuS5rbALD9VKMSjAorD114=;
+ b=GWDANyaIWzbbHQiMVS7HoHjaBjx/4he6rwNl6fzPO7s0UMioxdjJ+/WJZSe007jyISWMonNHeAhK15ZrrSS9r4rzrptZdBqDcjz6DMka++LK5oVK35ZYmWiLDrEPWrFaTMmxhbzBtGN3kDaYHMiw3pnlv7vMZ2bdzbfMIurmKkvN6BXPfwWYqqGuwxqMvJyjxYsdgD/ES52k3Wer7Qrl8k8aLfAovYG46IsNK9K3EamljnimPug1eO0wQR2+2BAnEZZhG1Oi9xHxr5MvWGBVGzXESUyvVwo8Vpro6u1INK9poX3nbwyRFoPZpuIanh2YTHzQy8zXxzRQWJoRaGlETQ==
+Received: from AS4P250CA0011.EURP250.PROD.OUTLOOK.COM (2603:10a6:20b:5df::13)
+ by AS8PR09MB5320.eurprd09.prod.outlook.com (2603:10a6:20b:377::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.16; Mon, 3 Nov
+ 2025 18:33:44 +0000
+Received: from AMS1EPF0000004E.eurprd04.prod.outlook.com
+ (2603:10a6:20b:5df:cafe::15) by AS4P250CA0011.outlook.office365.com
+ (2603:10a6:20b:5df::13) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9275.16 via Frontend Transport; Mon,
+ 3 Nov 2025 18:33:37 +0000
+X-MS-Exchange-Authentication-Results: spf=none (sender IP is 4.182.98.162)
+ smtp.mailfrom=sharepointonline.com; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=sharepointonline.com;
+Received: from germanywestcentral0.notifyp.svc.ms (4.182.98.162) by
+ AMS1EPF0000004E.mail.protection.outlook.com (10.167.16.139) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9298.6
+ via Frontend Transport; Mon, 3 Nov 2025 18:33:44 +0000
+Date: Mon, 03 Nov 2025 18:33:44 +0000
+Subject: Michele Tozzola ha condiviso la cartella "Assigment SImetti" con te
+Message-Id: <Share-28d95327-21e3-4a98-bea0-bc40a7e4d2c1-48a36afc-662e-46f8-bce4-07afb9db3227-SendEmail-PreprocessPayload-tid_6cd36f83-1a02-442d-972f-2670cb5e9b1a-rh_gwc_notifyp-aid_5e7703e9-c8f6-467f-8587-2d3f3ab3603a@odspnotify>
+To: S8654515@studenti.unige.it, S9185902@studenti.unige.it
+Reply-To: S8995647@studenti.unige.it
+Sender: SharePoint Online <no-reply@sharepointonline.com>
+X-Crid: =?utf-8?q?28d95327-21e3-4a98-bea0-bc40a7e4d2c1-48a36afc-662e-46f8-bce4-?=
+ =?utf-8?q?07afb9db3227-SendEmail-PreprocessPayload?=
+X-Tnid: 6cd36f83-1a02-442d-972f-2670cb5e9b1a
+X-Usid: 64e8ee57-1d1b-40f6-9189-a0e7085107de
+MIME-Version: 1.0
+Cc: Michele Tozzola <S8995647@studenti.unige.it>
+From: SharePoint Online <no-reply@sharepointonline.com>
+Content-Type: multipart/related; boundary="=-GpWja8lsO0RDkw/+p27brg==";
+	type="text/html"
+X-MS-TrafficTypeDiagnostic:
+	AMS1EPF0000004E:EE_FirstParty-SPO-V3|AS8PR09MB5320:EE_FirstParty-SPO-V3|DU6PEPF00009529:EE_|AS2PR03MB10194:EE_
+X-MS-Office365-Filtering-Correlation-Id: 602951f8-5cde-4248-0d09-08de1b078699
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam-Untrusted:
+ BCL:0;ARA:13230040|69100299015|61400799027|376014|13003099007|4053099003|8096899003;
+X-Microsoft-Antispam-Message-Info-Original:
+ =?us-ascii?Q?Aw5+O+sU2vXb0oAcQ8XmCQsXqzSbRd53QckLmwKwIWxLjmO1tPPNJEAmIbLR?=
+ =?us-ascii?Q?AaGIbdaFUl0Jz6M3mi4BdB0lpCUOKsJ8KgrKDzKdw2/IzbYIqhblDIUu8CTL?=
+ =?us-ascii?Q?mmAdqhXHL0rv1IyJ5AW6o8Ji+cikPD26nDyIHm3NIYhtRhBtMeWzioeGIfnf?=
+ =?us-ascii?Q?cWl9oWh5u2iXrQmCTsIDt9rvlJ8PFg1QBC/5gTkCMFJe5+f6m7RF3tol0X/s?=
+ =?us-ascii?Q?4rDowNpNAymSRnjZmnp3lwk4l+iVVtKxM4lntGWPwqdsfeqZYAZzFOd3IK5m?=
+ =?us-ascii?Q?wMPTFzG+qavxET4YLSzyKbywIdbTotB3iopxE1M0R0DXkibRcpprk6hO5H6n?=
+ =?us-ascii?Q?9PRNwrJl2eVkownRjiiRtT6iWv+JzW83s33ql5Wocu6/zRoyzXSNF5n1up8U?=
+ =?us-ascii?Q?XXlVjnm3h68TDohW48piztmWyIN9AhCuQLOqjIJ8aoyy3ltf9z6k5kv690NU?=
+ =?us-ascii?Q?MC69q6vIKBK+0dFYgiLiYMO+XnYSJzrcMaPcZeKjtoeF9ckP0794aEb6NHyI?=
+ =?us-ascii?Q?p1TecwYJUMtx2CAaRxPKXMgib14nfFYNGEaK1CNM4xCpEJ7ioQ57xjfggziu?=
+ =?us-ascii?Q?xvrXbOjBJxAlpzO53q8GYjggzofmxE08wV7cIiFiVNDQLonEbrNoCZFaLy3S?=
+ =?us-ascii?Q?55AqG1hdhAtu6MkOIBCZwYnSkDhe9Z15K8uENhslDIbWY2nZopaCfZnylWPA?=
+ =?us-ascii?Q?FPVCDHge9U5anAV/YNSTDyC6sly37xY+LrnPhzvFWsYdIiE0WB99rbm8hxMk?=
+ =?us-ascii?Q?+cUba8GSOpJJ8RJZKS3Xzb4MQl20PQ7A/hIhS18eqU244YYIEq3Jrpo0Ax+q?=
+ =?us-ascii?Q?1osLWkehZd5wvD+D/sVk/fK4YimKc77bywkaYzo5TWS9YgGncJdNdKrzzVLE?=
+ =?us-ascii?Q?zrjghXhh03Ze5/53Y9h6yv+AqvDNbD1d6HV2gGzvixi5sdvvhpWi6vP3qfif?=
+ =?us-ascii?Q?XUAvLZKvfuZyRS0ZKMD/1pSMQNRmaICPQlB3l0uTLdjhp3PivTAHIFx25t9m?=
+ =?us-ascii?Q?ITgOtjcsMaTprjqLyFCzLvMFQrlEGyCfvwl6bdwE26GZuNsd9k1BDzD7sf7z?=
+ =?us-ascii?Q?kP3SPcgPRiuZ1hM4O97+XwkBpmGoQ7QjrxMCs3REfMEawsyESb8oAZszt/Re?=
+ =?us-ascii?Q?OAljNkp0xkp3ejKxruu0J2pPMQUjrwY3u32fVzHdM5QojD4hPhmBEwR3A0K/?=
+ =?us-ascii?Q?ugBjJB0G9FGfKLqk1QbPsyu1SydcBiWvY/mTWnJDIwfKE4MPzx4Whj8W/Bd/?=
+ =?us-ascii?Q?WHMXBya+PLsDlfX4Tku9f2W7Xgrd35NY0s/ph+Rw1GW+yLO9v55O1i5x9Pcm?=
+ =?us-ascii?Q?6QyrT9X3XuqMd+Kq3DAA+pozhHcSXPMvgJcONBlr/es2WLx/yORUkDYa523I?=
+ =?us-ascii?Q?OULh3hYdq1kXCrccmvjXn/IUYZMZi/t2RvqAxHGguXgOP1nbKoVFUUp0PsT7?=
+ =?us-ascii?Q?fffwagffHJ32X9oJqwXL1bfNg0g4x9z4?=
+X-Forefront-Antispam-Report-Untrusted:
+ CIP:4.182.98.162;CTRY:DE;LANG:it;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:germanywestcentral0.notifyp.svc.ms;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(69100299015)(61400799027)(376014)(13003099007)(4053099003)(8096899003);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-Original-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-Original-0:
+	ZAMN/t7BK1VBYxhI5DvSwK79bCCf7bBYke2dKcnZ1CZC7GXRuTeLZSJBcr5cTqgonALjO5CdJ05RiSFw1gWq41Z8HFFJ3fw7w7wuXeo6T5X4hGgb8raohbd0JZlqoiQSDXq3fFJFwIjYXJV20Y9oz2LVJKro+kr4QoPmIpCUWFpWEKlVp3w4RYWuGKnH/Ipdsm3vwEY3opfg04o+qORdTDrks9KmZzByvZoifZrrBx8k7SmAVzHUf3i+RRpiu5pZB4yMVFDZ88W2B83M6IL75DC4zbsFYFqY8PeXnhTUYRid6MxsSTOEpPwvsZjwW+UWe5RQ+DMLV9kIheUbgkjQE+Liid0KU1nzDla1yvG7GGuYo1NkgG4RCmv39KQM5N8jJ27eP2sr2GtK/+jYoyZsbA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR09MB5320
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 6cd36f83-1a02-442d-972f-2670cb5e9b1a:0
+X-MS-Exchange-Transport-CrossTenantHeadersStripped:
+ DU6PEPF00009529.eurprd02.prod.outlook.com
+X-MS-Exchange-Transport-CrossTenantHeadersPromoted:
+ DU6PEPF00009529.eurprd02.prod.outlook.com
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id-Prvs:
+	2586217f-59e0-47f3-ff24-08de1b078548
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam:
+	BCL:1;ARA:13230040|69100299015|13012899012|12012899012|6062899009|5082899009|13102899012|35042699022|5062899012|4092899012|2092899012|3092899012|3072899012|8096899003|13003099007|4053099003;
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?UkUzUUhFWDdPdDc2MlRNT2dMYm5HZ1pib1VCZ0E1L2dnRjJ5NW5leVl4bW9C?=
+ =?utf-8?B?WG1lVWx4YVNkQWdwcG9JbzJNelZhWGZ1dVc5YUMyMEwwM0wrSzlNZjV5WXV6?=
+ =?utf-8?B?TlliNlFCMjRJRlhBdDhFT3EwSDBQL3lTamZqbkk5UHEyQ0R6WU5tbXhFMjVJ?=
+ =?utf-8?B?TmEyN2xvQzlMMlNhblcxc3FKdzNpN1dkNWI2R0FkOFpORG1rUy9Eb3ZEeUdF?=
+ =?utf-8?B?SWdXZElXVFNPdXdDOWtZbzY0TjhheWxQdWZrd2tWYStIMUluM1hOaWd4NDBQ?=
+ =?utf-8?B?elpRV3hsV1NJeXFGSUtObEJ6bTk3N2xQQUVTWGgvTHpMdWFUd1VHR29FRVhn?=
+ =?utf-8?B?WDJRLzZUNDYyRWNnaXFRZW5SRElRMFZNRFJGRnphVEE4cHVhR2UrdVd0L3dT?=
+ =?utf-8?B?MEk4TzRLN29pK2ROUEhSRWxJWFNKUndtY0I4amJxbi9rZzZsR240Z3lHNFIz?=
+ =?utf-8?B?OWFDaHRhMHBtbVEvN3V4QUxJR1RUYjlmWmo0WGZBU3A3ZVVSemZPOHZLclZF?=
+ =?utf-8?B?SSt2M3RJSDFHcms4ZXY2MDBKV25nVlZKbndTZTg0UHNsWGU5MGRLRmhtbmNM?=
+ =?utf-8?B?OG5panBUT1gxRG9sazgrLzJScVo2MlB5Z3VRbnovSTRZc0wzN1lWYkFJQnpm?=
+ =?utf-8?B?K0w1eEpTd3p3K2ZtTjJNbDdFVTFiVDlOciswTm5helBrVVVkdFNnK3RoNGwz?=
+ =?utf-8?B?eHZ5N042MmprdktCWFIrZENhYlVGVG4xd3BNMTEyYkdqMXBVUWJNblFwUExO?=
+ =?utf-8?B?Z3BBSlJpcDBiY1pPUU43RGU0VTVic1VxMXpUOUZKeUg0MjZoUDA3YzZpM0Mr?=
+ =?utf-8?B?c09kelNUNURxZGlLRE9GQ0ZUZTkwVU5MdnhCV0hPdDY4TFZyc0c2MFpmUHZr?=
+ =?utf-8?B?ZlVwMFk1Rk5PL3MvS0EvcEdSeGN0dlBrNnIycU5LZXRsemNtc3RuTVZRSE55?=
+ =?utf-8?B?dWxOa0tYWkErVXlzZGtwTkNYdk5nd0lEbjBsZzdHZ2NqTUhJaVg2ZGVadG5I?=
+ =?utf-8?B?Q045UGhoYk92cGV3NEJDd3pRbGJJK2pTMFl6TnFveXU1WHU0aGQ1U2dxSC9I?=
+ =?utf-8?B?OVpFTldwY3RVZ2t5MEZ3RGh0aUZPdGVrT1JnRTVheDBkbWdvcEd5ZDF6RWNJ?=
+ =?utf-8?B?TFAyZVpMZ203elBGb2hkWUNGdDBRendUQUY2M290QjdoQ0swaFVZampaa2ls?=
+ =?utf-8?B?bUJjbXNkT0h2d2FqcW5XdkY1Qm52VkFZVFFYMUpMRnl2TDRDMFRuVjZrdy9r?=
+ =?utf-8?B?VWhOM2VuSm54YXZ0dFc0ZnBHa2VFczRydkRSbUZ0WS9mck04MGN0MWFJdzRk?=
+ =?utf-8?B?clB3bXFHK1pvTVlFNGhsUERCRlJhYWF6ZDdkQVpuWlNwb2Y5dERmWmh4MWNX?=
+ =?utf-8?B?SlFDR2h2VTBKTGpjVmNDQm5EWTdkc1pBTVkwcWxJc1VuQ3RtZGM1a3lUVzRZ?=
+ =?utf-8?B?VXQzbERkRTU5Sld2Yy9reUU1NEVWNkhuSHZ2K0ZjdGFmRWdpM2pFQUZ1ZGxV?=
+ =?utf-8?B?SFdKVjRtaUM3cjhKMW9qTFdvZmFwMGtTVGtIL0xOSWlqNVcyZEQ2L2w3a0xY?=
+ =?utf-8?B?dklsQmVVWTZscUcvL1oybzQzenUzNUs0Vzd2dlR1UFptZlpXNkpiaHlvK1dw?=
+ =?utf-8?B?cXB6T29ZRW5lM0habE9MOWJvL01FZ0p6YXFUNzJhbncwTUtkTlRmZExjMXl6?=
+ =?utf-8?B?c3VpQzVKYm5YUlB2UWp4T3paY1lRRUlpQy93UDlYSWJncW9qVkhQWGQzNWJM?=
+ =?utf-8?B?ZzVmMGpZVUIrdEQyMFRRS21xVnVOeWNEYkJ4czJhTUNNRjUza1ZlOE4ra1Fy?=
+ =?utf-8?B?RHJGMVFhUDRkTXFyT1l3NkxMdG90Nkxud2NoSURIVXl5dEl2VithbFVYTmhh?=
+ =?utf-8?B?VHhmc3B5c0FDWkZqcGcwNFRsRUVYWm1YZklyUlo4bFJZclFuZ3JTbjhvcmtH?=
+ =?utf-8?B?SzVIemdoajM3T2F2V3JHaTZJdlpZM3dyOU1GMThDS1VUdWVYK1Q5UG1VaTJ2?=
+ =?utf-8?B?bUU5R2FTdjVaSGJuL3ZNLzNFb0YwQmR2NS9FMmYzci9NL3FmRFF5WFdHNEt2?=
+ =?utf-8?B?Q1JNdmpTZTZldzYwRWxKZkhOeit1S1JvRjZNQWQ4MzlSU09KZzVxY1htczBJ?=
+ =?utf-8?B?UklaOUFMUzZ5VmYvNE5EbHBPTURaN0dXNHZtbGY3bXhTTTlKcXNXRHBCVDlk?=
+ =?utf-8?B?bGQyNS9RbkIrbDZqQ253Uk1GZDU5MUxNNGdrelBEYVhxMEpxdVV5QmxEd0Iv?=
+ =?utf-8?B?S2dlRUtSazFkU00xUzJCcEFGMDQ5K2JOQVA4RXlKYlBMaXNnUnlwWGd0S0Qw?=
+ =?utf-8?B?WkRPZEUvTHBvK3YxWVJnOWV4WElSMy9lTUpmYkdnNTJMUFgrUlhFL3Zla21S?=
+ =?utf-8?B?Y0x4TEQ5ekVTZmVhN1dLUjBuNmlMT2xjRzdjanEwUGtLZ1BQb1pYVndDZ1lo?=
+ =?utf-8?B?MDQ2NVFYRmlwelNZbFZrTm1TcW1nR0ZmWHFHK09qUVRPT1dYUUttczlZQkZZ?=
+ =?utf-8?B?RzBveVkwdW1ZVU9tMnQvSHk3VUVxQUpsRWRDeVJycG96Q2hUVEJoQkl3S0tJ?=
+ =?utf-8?B?cHo5amtEeS9OeWJDYzdVTFVnbHdpY0JEZEszMDFNMEJxMERWcjlsbTRCOWhY?=
+ =?utf-8?B?cEI3MlVBQTVCUElhTWVxYU5nZUVxMWl3Z2MzVGluR1RqYmFmVmR1Y2ZnbDBh?=
+ =?utf-8?B?b25xRlZQYmNhU3A0ZWxtTVFrd2xTQThxNWxreEcvTEJSc3VrVHR3bHNiOGNO?=
+ =?utf-8?B?SVZWWnlzR3VaemszQmJ5czF3ZlkxbFdMOVJmSFNXaUYxQ0lKaGk4cHR4Rmt3?=
+ =?utf-8?B?d1hTMUYxSUpyR1lMbEtKT0ZYM2FxY3RoRTdHbEVJd0NMdG9vSVhUdkNLc2VX?=
+ =?utf-8?B?K1QrVUp0SWhjbXd6UTg2Ymc2WlpwYU5BUzlLeld2YXR5NnVXSE9tV0VlNTRw?=
+ =?utf-8?B?dGV6RGczWmd1UG02MnJvb1l0d05JVmZadHNzSy9VWjMvbERTS05WOFJEZmR3?=
+ =?utf-8?B?Zm5xSHVuVTFveXBhTWloR09LOHZqNGVDYmU1Sy9iM1FCRWNIRVlIT1o4di9t?=
+ =?utf-8?Q?R+IohggILqWgNe8QD1/MyTJCBqsNYWAE8=3D?=
+X-Forefront-Antispam-Report:
+	CIP:2a01:111:f403:c20f::7;CTRY:;LANG:it;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:OSPPR02CU001.outbound.protection.outlook.com;PTR:mail-norwayeastazlp170130007.outbound.protection.outlook.com;CAT:NONE;SFS:(13230040)(69100299015)(13012899012)(12012899012)(6062899009)(5082899009)(13102899012)(35042699022)(5062899012)(4092899012)(2092899012)(3092899012)(3072899012)(8096899003)(13003099007)(4053099003);DIR:INB;
+X-OriginatorOrg: unigeit.onmicrosoft.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Nov 2025 18:33:46.8837
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 602951f8-5cde-4248-0d09-08de1b078699
+X-MS-Exchange-CrossTenant-Id: 6cd36f83-1a02-442d-972f-2670cb5e9b1a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=4d93e101-5f88-4b2c-b255-9a7bb7b1b764;Ip=[4.182.98.162];Helo=[germanywestcentral0.notifyp.svc.ms]
+X-MS-Exchange-CrossTenant-AuthSource:
+	DU6PEPF00009529.eurprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS2PR03MB10194
+X-MS-Exchange-CrossPremises-OriginalClientIPAddress: 2a01:111:f403:c20f::7
+X-MS-Exchange-CrossPremises-TransportTrafficType: Email
+X-MS-Exchange-CrossPremises-TransportTrafficSubType:
+X-MS-Exchange-CrossPremises-AuthSource:
+	DU6PEPF00009529.eurprd02.prod.outlook.com
+X-MS-Exchange-CrossPremises-AuthAs: Anonymous
+X-MS-Exchange-CrossPremises-Antispam-ScanContext:
+	DIR:Incoming;SFV:NSPM;SKIP:0;
+X-MS-Exchange-CrossPremises-SCL: 1
+X-MS-Exchange-CrossPremises-Processed-By-Journaling: Journal Agent
+X-OrganizationHeadersPreserved: AS2PR03MB10194.eurprd03.prod.outlook.com
+
+--=-GpWja8lsO0RDkw/+p27brg==
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xmlns:o="urn:schemas-microsoft-com:office:office"><head> 
+
+
+
+
+
+<style type="text/css">
+    .headerBackgroundMsoTable {
+        border-spacing: 0px;
+        width: 100%;
+    }
+</style>    <style type="text/css">
+    @font-face {
+        font-family: "Segoe UI";
+        src: local("Segoe UI Light"), url("https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean/segoeui-light.woff2") format("woff2"), url("https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean/segoeui-light.woff") format("woff"), url("https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean/segoeui-light.ttf") format("truetype");
+        font-weight: 100;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Segoe UI";
+        src: local("Segoe UI Semilight"), url("https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean/segoeui-semilight.woff2") format("woff2"), url("https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean/segoeui-semilight.woff") format("woff"), url("https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean/segoeui-semilight.ttf") format("truetype");
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Segoe UI";
+        src: local("Segoe UI"), url("https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean/segoeui-regular.woff2") format("woff2"), url("https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean/segoeui-regular.woff") format("woff"), url("https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean/segoeui-regular.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Segoe UI";
+        src: local("Segoe UI Semibold"), url("https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean/segoeui-semibold.woff2") format("woff2"), url("https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean/segoeui-semibold.woff") format("woff"), url("https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean/segoeui-semibold.ttf") format("truetype");
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    @media only screen and (max-width: 640px) {
+        body {
+            background-color: #ffffff;
+        }
+
+        div.grey-bg-container {
+            background-color: #ffffff;
+        }
+    }
+
+    @media only screen and (min-width: 640px) {
+        .CommentMention-TextRow-rightColumn {
+            width: 52px !important;
+        }
+    }
+    /* Responsive visibility clases. */
+    .u-largeOnly {
+        display: none !important;
+    }
+
+    @media only screen and (min-width: 640px) {
+        .u-smallOnly {
+            display: none !important;
+        }
+
+        .u-largeOnly {
+            display: block !important;
+        }
+    }
+    /* Adjustments to the Sharing template. */
+    @media only screen and (min-width: 640px) {
+        .Sharing-main {
+            padding: 40px !important;
+        }
+    }
+
+    @media only screen and (max-width: 640px) {
+        .NotificationHeader-icon {
+            width: 36px !important;
+        }
+
+        .NotificationHeader-title {
+            padding-left: 28px !important;
+            padding-right: 28px !important;
+        }
+
+        .NotificationHeader-title-text {
+            font-size: 20px !important;
+            line-height: 28px !important;
+        }
+    }
+
+    .word-button:hover {
+        background-color: #124078 !important;
+        border-color: #124078 !important;
+    }
+
+    .word-button:active {
+        background-color: #002050 !important;
+        border-color: #002050 !important;
+    }
+
+    .powerpoint-button:hover {
+        background-color: #a92b1a !important;
+        border-color: #a92b1a !important;
+    }
+
+    .powerpoint-button:active {
+        background-color: #740912 !important;
+        border-color: #740912 !important;
+    }
+
+    .excel-button:hover {
+        background-color: #217346 !important;
+        border-color: #217346 !important;
+    }
+
+    .excel-button:active {
+        background-color: #004b1c !important;
+        border-color: #004b1c !important;
+    }
+</style>
+
+<!--[if mso]>
+<style type="text/css">
+   body, table, td { font-family: 'Segoe UI', sans-serif !important; }
+   a { color: #0000EE; }
+</style>
+<![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--[if mso]>
+<xml>
+    <o:OfficeDocumentSettings>
+        <o:AllowPNG/>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+
+</head>
+<body style="margin: 0px;padding-top: 32px;background-color: #f8f8f8">
+    <div style="background-color:#f3f3f3;">
+                <!--[if gte mso 9]>
+                <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+                <v:fill type="tile" src="" iconthumbnail="" color="#f3f3f3"/>
+                </v:background>
+                <![endif]-->
+          <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0px">
+            <tbody><tr>
+              <td valign="top" align="center" style="background-image:url();background-color:#f3f3f3;">
+                <table align="center" style="border-spacing: 0px;width: 600px;margin-right: auto;margin-left: auto">
+                    <tbody><tr>
+                        <td align="left" style="padding: 0px;margin: 0px">
+
+    <!-- Start Standard Header -->
+    <table cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0px;width: 100%;padding-top: 15px">
+        <tbody><tr>
+            <td align="center" style="width: 100%;border: 1px solid #c8c8c8 !important;box-shadow: 0px 3px 0px rgba(0,0,0,0.05);border-top-left-radius: 8px;border-top-right-radius: 8px;overflow: hidden;border-bottom-width: 0px;background-color: #ffffff">
+                <!--[if !mso]>-->
+                <div>
+                    <!--<![endif]-->
+                    <!--[if mso]>
+                    <table class="headerBackgroundMsoTable"  cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr class="headerBackgroundMsoRow">
+                                <td class="headerBackgroundMsoContainer">
+                    <![endif]-->
+                    <table cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0px;width: 100%">
+<tbody><tr>
+            <td align="center" style="padding: 20px 0;text-decoration: none">
+                <img alt="Condividi immagine" title="Condividi immagine" width="40" style="width: 40px;height: auto;" src="cid:080821e8-0463-427a-86df-decb94657f27">
+
+            </td>
+            </tr>                                                    <tr>
+                                <td colspan="1">
+                                    
+        </td></tr><tr>
+            <td colspan="3" style="padding-top: 20px; padding-right: 36px; padding-left: 36px; padding-bottom: 36px;" align="center">
+                <p style="color:#323130;font-size:24px;font-weight:600;line-height:32px;margin:0;max-width:400px;padding:0;text-align:center">
+Michele Tozzola ti ha invitato a visualizzare una cartella                </p>
+            </td>
+        </tr>
+
+
+                                
+                            
+                    </tbody></table>
+                    <!--[if mso]>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <![endif]-->
+                    <!--[if !mso]>-->
+                </div>
+                <!--<![endif]-->
+            </td>
+        </tr>
+    </tbody></table>
+    <!-- End Standard Header -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" style="padding: 0px;margin: 0px">
+
+</td></tr><tr>
+    <td style="background-color: #f8f8f8;text-align: center;border: 1px solid #c8c8c8 !important;border-top: 1px solid #dedede;box-shadow: 0px 3px 0px rgba(0,0,0,0.05);border-bottom-left-radius: 8px;border-bottom-right-radius: 8px;overflow: hidden">
+        <table style="width:100%;" dir="ltr">
+            <tbody><tr>
+                <td colspan="3">
+                    <p style="font-size:16px;color:#323130;margin:40px 20px 28px">
+                                    <a name="customMessage" role="presentation" style="cursor: default; text-decoration: none; text-align-last: center; text-align: justify; display: block;"> Ecco la cartella che Michele Tozzola ha condiviso con te.</a>
+                    </p>
+                </td>
+            </tr>
+                <tr>
+        <td colspan="3" style="background-color:#f8f8f8" align="center">
+            <a href="https://unigeit-my.sharepoint.com/:f:/r/personal/s8995647_studenti_unige_it/Documents/Assigment%20SImetti?e=5%3ab37fd68a545f43c1afe925cf948eb588&sharingv2=true&fromShare=true&at=9" aria-label="Assigment SImetti" style="display:inline-block;text-decoration:none;color:#323130">
+                <!--[if mso]>
+                    <table width="240" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:auto;text-align:center;background:#ffffff;">
+                <![endif]-->
+                <!--[if !mso]><!---->
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="width:100%;text-align:center;background:#ffffff" align="center">
+                    <!--<![endif]-->
+                    <tbody>
+                        <tr>
+                            <td style="border-top:1px solid #d2d2d2;border-left:1px solid #d2d2d2;border-bottom:1px solid #d2d2d2;background:#ffffff;padding:20px 4px 20px 20px;">
+                                <!--[if mso]>
+                                    <a href="https://unigeit-my.sharepoint.com/:f:/r/personal/s8995647_studenti_unige_it/Documents/Assigment%20SImetti?e=5%3ab37fd68a545f43c1afe925cf948eb588&sharingv2=true&fromShare=true&at=9" style="text-decoration:none">
+                                <![endif]-->
+                                <img alt="icon" height="auto" src="cid:3e742b84-3d58-48bf-9292-758be83f908d" style="display:block;width:32px" width="32">
+                                <!--[if mso]>
+                                    </a>
+                                <![endif]-->
+                            </td>
+                            <td style="border-top:1px solid #d2d2d2;border-bottom:1px solid #d2d2d2;border-right:1px solid #d2d2d2;background-color:#ffffff;font-size:16px;word-break:break-all;text-align:left;padding:20px 20px 20px 4px;">
+                                <!--[if mso]>
+                                    <a href="https://unigeit-my.sharepoint.com/:f:/r/personal/s8995647_studenti_unige_it/Documents/Assigment%20SImetti?e=5%3ab37fd68a545f43c1afe925cf948eb588&sharingv2=true&fromShare=true&at=9" style="text-decoration:none; fontSize: 16px; color: #323130">
+                                <![endif]-->
+Assigment SImetti                                <!--[if mso]>
+                                    </a>
+                                <![endif]-->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </a>
+        </td>
+    </tr>
+
+            
+<tr>
+        <td colspan="3" style="text-align:center;background-color:#f8f8f8" align="center">
+            <div style="display:inline-block">
+                <!--[if mso]>
+                <table dir=ltr border="0" cellpadding="0" cellspacing="0" role="presentation" style="height:20px; width: auto;">
+                <![endif]-->
+                <!--[if !mso]><!---->
+                <table dir="ltr" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width:auto;height:20px" align="center">
+                    <!--<![endif]-->
+                            <tbody>
+                                <tr>
+                                    <td style="height:20px;padding:24px 4px 20px 0px" align="center">
+                                            <img src="cid:19eed34a-8825-4ff7-a9f6-c95a44e7ca5b" width="22" height="22" style="padding-bottom: 3px" alt="permission globe icon">
+                                    </td>
+                                    <td style="font-size:12px;padding:20px 0px 20px;color:#323130">
+                                        Questo invito funzionerà solo per te e le persone con accesso esistente.
+                                    </td>
+                                </tr>
+                            </tbody>
+                </table>
+            </div>
+        </td>
+</tr>
+
+<tr>
+    <td colspan="3" style="padding:0px 0px 32px 0px;height:40px;background-color:#f8f8f8; text-align:center;border-top:none;border-bottom:none">
+        <!--[if mso]>
+                <table class="btnContainer" align="center" role="presentation" border="0" cellspacing="0"  dir="ltr">
+                    <tbody>
+                        <tr>
+                            <td align="center" style=" padding: 5px 10px 5px 10px !important; color: #ffffff;">
+                                <a href="https://unigeit-my.sharepoint.com/:f:/r/personal/s8995647_studenti_unige_it/Documents/Assigment%20SImetti?e=5%3ab37fd68a545f43c1afe925cf948eb588&sharingv2=true&fromShare=true&at=9">
+                                            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://unigeit-my.sharepoint.com/:f:/r/personal/s8995647_studenti_unige_it/Documents/Assigment%20SImetti?e=5%3ab37fd68a545f43c1afe925cf948eb588&sharingv2=true&fromShare=true&at=9" style="height:40px;v-text-anchor:middle;width:168px" arcsize="2%" strokecolor=#005A9E fillcolor=#005A9E>
+                                        <w:anchorlock/>
+                                        <center style="color:#ffffff;font-family: 'Segoe UI', sans-serif;font-size:16px">Apri</center>
+                                    </v:roundrect>
+                                </a>
+                            </td>
+                            <td cellpadding="16"></td>
+                            <td align="center" style=" padding: 5px 10px 5px 10px !important; color: #106ebe;">
+                                <a href="https://unigeit-my.sharepoint.com/:f:/r/personal/s8995647_studenti_unige_it/Documents/Assigment%20SImetti?e=5%3ab37fd68a545f43c1afe925cf948eb588&web=1&openShare=true&fromShare=true&at=9">
+                                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://unigeit-my.sharepoint.com/:f:/r/personal/s8995647_studenti_unige_it/Documents/Assigment%20SImetti?e=5%3ab37fd68a545f43c1afe925cf948eb588&web=1&openShare=true&fromShare=true&at=9" style="height:40px;width:168px;outline-color: #106ebe; outline-style: solid;color: #106ebe; display: inline-block" arcsize="2%" strokecolor=#106ebe>
+                                        <w:anchorlock/>
+                                        <center style="color:#106ebe;font-family: 'Segoe UI', sans-serif;font-size:16px">Condividi</center>
+                                    </v:roundrect>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+        <![endif]-->
+        <!--[if !mso]> <!---->
+            <table align="center" role="presentation" border="0" cellspacing="0" dir="ltr">
+                <tbody>
+                    <tr>
+                        <td align="center" style=" padding: 5px 10px 5px 10px !important; color: #ffffff;">
+                            <a href="https://unigeit-my.sharepoint.com/:f:/r/personal/s8995647_studenti_unige_it/Documents/Assigment%20SImetti?e=5%3ab37fd68a545f43c1afe925cf948eb588&sharingv2=true&fromShare=true&at=9" style="background-color:#005A9E;border-color:#005A9E;border-radius:2px;border-style:solid;color:#ffffff;display:inline-block;font-size:16px;text-decoration:none;text-align:center;line-height:40px;width:168px" aria-label="Apri Assigment SImetti">
+                                Apri
+                            </a>
+                        </td>
+                        <td cellpadding="16"></td>
+                        <td align="center" style=" padding: 5px 10px 5px 10px !important; color: #ffffff;">
+                            <a href="https://unigeit-my.sharepoint.com/:f:/r/personal/s8995647_studenti_unige_it/Documents/Assigment%20SImetti?e=5%3ab37fd68a545f43c1afe925cf948eb588&web=1&openShare=true&fromShare=true&at=9" style="outline-color: #106ebe; outline-style: solid; outline-width: thin; color: #106ebe; display: inline-block; font-size: 16px; text-decoration: none; text-align: center; line-height: 40px; width: 168px ">
+                                Condividi
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        <!-- <![endif]-->
+    </td>
+</tr>
+        </tbody></table>
+    </td>
+</tr>
+<tr>
+                        
+                    </tr>
+                    <tr>
+                        <td align="left" style="padding: 0px;margin: 0px">
+
+    <!-- Start Standard Footer -->
+    <table cellpadding="0" cellspacing="0" border="0" align="center" style="border-spacing: 0px;width: 100%;padding: 10px">
+        <tbody><tr>
+            <td align="left" style="font-size: 12px;line-height: 16px;padding: 0 24px">
+                <div>
+                    <table cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0px;width: 100%">
+                        
+<tbody><tr>
+    <td align="left" style="padding-top: 5px;text-align: left">
+        <img src="cid:16dc67bb-711d-4b95-8d53-28567c7351db" alt="" title="" height="22" style="margin: 0px;height: 22px;width: auto">
+
+    </td>
+</tr>
+
+    <tr>
+        <td align="left" style="padding-top: 5px;text-align: left">
+            <table cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0px;width: 100%">
+                <tbody><tr>
+                    <td align="left" style="padding: 0 4px 0 0;white-space: nowrap"> <p style="padding: 0px;margin: 0px;color: #605e5c">
+
+<a href="https://unige.it/privacy" target="_blank" title="" style="padding: 0px;margin: 0px;color: #605e5c">Informativa&#160;sulla&#160;privacy</a>
+
+</p>
+ </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+
+    <tr>
+        <td align="left" style="padding-top: 5px;text-align: left">
+            <table cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0px;width: 100%">
+                <tbody><tr>
+                    <td align="left">
+                        <p style="margin: 0px">Questo messaggio di posta elettronica viene generato tramite unige.it'uso di Microsoft 365 e può contenere contenuto controllato da unige.it.</p>
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+                        </tbody></table>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <!-- End Footer -->
+                        </td>
+                    </tr>
+                </tbody></table>
+              </td>
+            </tr>
+        </tbody></table>
+    </div>
+
+<img src="https://westeuroper-notifyp.svc.ms:443/api/v2/tracking/method/View?mi=hfgxZoT0G0ySn4keP8CcmQ&si=Share" aria-hidden="true" role="presentation" height="1" width="1" istrackingpixel="true"></body></html>
+--=-GpWja8lsO0RDkw/+p27brg==
+Content-Type: image/png; name=080821e8-0463-427a-86df-decb94657f27
+Content-Transfer-Encoding: base64
+Content-Disposition: inline; filename=080821e8-0463-427a-86df-decb94657f27
+Content-Location: 080821e8-0463-427a-86df-decb94657f27
+Content-Id: <080821e8-0463-427a-86df-decb94657f27>
+
+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
+gEagxRD4P4koPOQHmKVOAAAAAElFTkSuQmCC
+
+--=-GpWja8lsO0RDkw/+p27brg==
+Content-Type: image/png; name=3e742b84-3d58-48bf-9292-758be83f908d
+Content-Transfer-Encoding: base64
+Content-Disposition: inline; filename=3e742b84-3d58-48bf-9292-758be83f908d
+Content-Location: 3e742b84-3d58-48bf-9292-758be83f908d
+Content-Id: <3e742b84-3d58-48bf-9292-758be83f908d>
+
+iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+bWFnZVJlYWR5ccllPAAAAdJJREFUeNrs3KtOA0EUxvFvW9hQBDThIjbhIsGQgOERsLUYAsFi1vAQ
+mL4BtxdoLY5HwIFAVBBCMK1ooC20y4TUMgECndnp/5dsVhQxnK9nzowACQAAAAAAAAAAAAhZZPsw
+u1LFvKrmWXWwtrp5LqKdz/f4BTAsfs2DNZ6bEA5CDaBg+azqyRr3zZfhbKw6wPzCZfNqerbWIDuh
+kKO1BtkJthmQebrmoDohfwEsHUrlbal9I/Xbvte3YZ40Wr+sh7AF5a34Gh7fa9ntXiX/AeSv+N86
+UU54v/TitJTs5rn4sl1k/Q4gnpdWjqSpJM/Ft/IvgNKyNDknzW5JM5tmk4yDLb49gI1TtysbdKTe
+k9R9MEey91AvwpYAmteCywCijOq4nQER1XEbAB3gNgDqPxIFSkAABAAvj6EUx/EQZgqzBREACICb
+MLgJswWBAAgADGE6ACM8BdEBdAABgCFMB8DREKY4bEFsQaAD6ABwE6YDwDGUIQy2IDoAdADHUNAB
+zACwBbEFgQ5gBuA/t6AG5fkzjR93wMt9Kx10+rV4oaR4sUQJf6H3/Kq3VldRMUq/+hnr30I+Hq+5
+/NfFoXzz0+Tkrk4pAAAAAAAAAAAAMJ4+BBgAAkV2Pp6aOvYAAAAASUVORK5CYII=
+
+--=-GpWja8lsO0RDkw/+p27brg==
+Content-Type: image/png; name=19eed34a-8825-4ff7-a9f6-c95a44e7ca5b
+Content-Transfer-Encoding: base64
+Content-Disposition: inline; filename=19eed34a-8825-4ff7-a9f6-c95a44e7ca5b
+Content-Location: 19eed34a-8825-4ff7-a9f6-c95a44e7ca5b
+Content-Id: <19eed34a-8825-4ff7-a9f6-c95a44e7ca5b>
+
+iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA
+AXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHFSURBVHgB7ZeBbcIwEEUvUQZoN6Ab0AlKN6AT
+NIEBKBvQCQoDQNIN2KB0gmaDMkIXAPqvddRUwk7iuwiQ8qToEtuyfuzLz5moo+O0BCQkjuOrMAwn
+h8NhgMeBac6DIFisVquMhIgEQlwPQt5w27MM2UL4fZZlW/IkJAElcT9CcF2naRogPnAb9/EYXmXy
+xFvgaDSKS+JusUobXF/ch7jmtkIkUuCJPPEWCAETE6eFsDLchr7EjLkjTyRb3DdC1o4xuYkD8kSU
+g1UcW9mmtCpQg0qbsficlNo+6RRYw+ekVPqkU2CSJJ/0ZyX8ReYaeYUXH+LFX+i/TR2d15qDLp+T
+0sQnrQKrfE5BZC2fdH3FdXxOSqVPntRm6uzM2ftgJ1BKREqMx+PH/X4/xy3n1Qx14SspoLaCEDdD
+4MK0h2tOSmhucblqVvNNNYFs6PT7Z2ADfiYl1HIQnpZxIGU6m5Fy+QIlZ1oNXAI3JvapJWDuQ3Ob
+28ZYBaLifTcxbWMVeU6YO1fVbFEL27jANQHEfZCpqlH1TpfLpbg25HmjKOrvdru0mBu/xRtqKtBM
+dt6HpgIIjSGUjwBa+biBME6heRvHiY4OTb4BON3p3SWF/gIAAAAASUVORK5CYII=
+
+--=-GpWja8lsO0RDkw/+p27brg==
+Content-Type: image/png; name=16dc67bb-711d-4b95-8d53-28567c7351db
+Content-Transfer-Encoding: base64
+Content-Disposition: inline; filename=16dc67bb-711d-4b95-8d53-28567c7351db
+Content-Location: 16dc67bb-711d-4b95-8d53-28567c7351db
+Content-Id: <16dc67bb-711d-4b95-8d53-28567c7351db>
+
+iVBORw0KGgoAAAANSUhEUgAAAI4AAAAkCAYAAABfegKAAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
+jwv8YQUAAAAJcEhZcwAALEoAACxKAXd6dE0AABWzSURBVHhe7Vx5mBTVtf+d6tl6cJa+t1kFGcMi
+ohIQQdweLnEXE7cQYxRwIxoRTTQafcYleaIkooLEJy5RcYuKW1zjFkFZRJgFGJYBRBCHpev2jDND
+z9JT5/3Rp8bbNT044PLip7/vq6+r7jn31nbu2e6pDuEHpKF3797h7OzsO/Lz8y8Mh8MbEonE5iDP
+fzq01mPC4fDUcDg8MJFIzA3SOwOt9bn5+fkTEonEG0EaANAZZ5yxYMiQId2ChI7QsGINGsoqAQB5
+Jb1ReNhBQZYOsXz58qZnnnlmPwAcpAWhlDqDiO4MtgN4yHXdmwCge/fu3ZLJ5EdBBgAPu677x2Bj
+ZxCNRn/BzE8CADO/Z4w5Msjznw6l1GYi6iWHI1zXzfSMOoRSak8Aq4hoD2a+wRjz5yAPbr311mre
+BWy+80FeWDyEFxYP4aqLrg2Sd4pp06YlAFDwGjIhGo0OU0rdp5TaorVmpVSd1voRrfUYn0drXaC1
+vlspVSo89cLz0/TROg+l1LFaa5ZtTpD+XYDWukKuP9mtW7cfBelKqSsjkchJwXYb0Wj0QK31Rq21
+F41GLwrSnWDDNwnHcTp9vlgsVmqMmUhE86Vpjeu641zX/afP47puneu6k4loFgAQ0QbhebFtoF2E
+MeZNAKcx86Tm5uaLg/TvApLJ5KnM/FsiOmbbtm3rbVpRUVEJEU1zHGes3R5ELBZbGgqFRgBYwMz3
+FhcXH2DT6bqfja2euP/IHnbjzlC/dBnq5i8FAIQH/gjFxx0RZOkQs1eVNf/3s7PzOmOqfMisP52Z
+lxpjhgfpSPFcAuBvAFa4rrt/kP4DvoBS6jYiugbAo67rjgvSg+jfv3+uMWaMMeZZu50m9x+25exY
+a3e78ZvCCyrUfNv60m9FcKLR6ABmPgMpX6XBGDNDa90LwNnMPAyAQ0TzXNe9H0BShgppra/2x2Xm
+tcaYZ5VSBxPRUX47AHieVxaPx19H6lxjmXlvq98aY8xzANCtW7fura2t5zLzMCIKAVhDRLNjsViV
+zy/XXyTjvqy1rjLGXExEhwFoAnCP67qLAaC4uHhIKBQ6i5n7E5EDYAszlxPR667rfqaUOpaI2p5T
+Mpm8r7a2Nt61a9d+nuf9BsBkAA4zlxHRP4St1nXde63rGcTMYwEMJKJcAHXMXNba2vpobW1tHADo
+iv5DY7+Iedrv9E3i2xQcqw0Aksw8DcBkeRBtYOZZxpiJSL2UvqFQaINFe8UYc4pS6j4iSjNbzHyv
+MeZSpGbxSiIaZJHnuK57ZiQSOd5xnH/4QmGhiZl/KcIVUkrVE1EeUuPeTkRHAjjYZ2bmC40xD2qt
+rwEwRfzEpLgajvDMMsZM1Fo/C+AMvy8RDYzFYlVa65sA3Oi3B7DBdd29kXpuPwPwNIDsIBMzrwNw
+oDHmc7r+1J/HLhp0YKcFp6GsEnUflgEA8vqXoPjoQ4MsHWL22ormG5574lsRHNEeJwF4yedj5lUA
+niKi7cx8BRENANDCzFFjzOcy1iBmfpmI+vmCAyBHaz0JwF9lnAuMMQ8D8GTobK31SwBOYObrjTFT
+I5FITyKqJKI9ACxk5huJKAngZgCHA6jxPK8kHo/XRiKRPo7jPCHtHjNvBXAPgPPlOi50HGceM68E
+kPQ879R4PP5W3759s+vr668FcKMvON27d++STCavB/AHWIITjUYHABjIzPcAKGHmdxzHmSb3s8N1
+3Xfl/ssBDAHwqud5l7S2ttZnZ2efDOARAOQLMW677bZYMPrZGb5KVDV9+vSmzkZVPrTWcyRiWhKk
++dBaXyJRxPJAe4EfISmlZtrBgFLqTCt6GmH3U0rNlT4v+209e/bM11rXSPvzNn9hYaFSSjUqpRJF
+RUURGeN2P9IrKChom5iRSKSP1tqT8/7Sb9daPyT8W3x+pdS9WutmpdT5Sqnx0mej3wdiurTWHyil
+2tIPWusx/r2JwLRBa10mtEfsdh9KqUlKqb9EIpHD7Xat9SdyfVPxbUdV/58gouWWhgCATf6O53lp
+5isTqqurd/j5HSI6yRaG7OzssUSUS0Qv+j4AgGOEt4yIuLCwUBUWFqrW1tYGZo4Jz37+GBZq6urq
+XKQivEtc1801xjzMzDuE3kdr/bAIe6impqbCdd3DjDG3pA+zezDGzDDGXB2Px98PkBqQup88AKAD
+Dh0bbyo4qDjA1CGS8c+RdFPPJrRHF2T3iAZZOkRuQ3nzsvcf+7ZMFbTWBQA+l8NLbQdQKTWSiBYh
+JThH2A9KKTWXiI6wTBWQGm8EgA/l8DLXdWdK+wIAozzPOyEej78hY2wloi9LrN7tuu4VEI0DYAIz
+rzbG2P4SkNJURY7jLAfQ22quBfCm53l3xePxD/xGyXW9BMtUWbQyAD/eWVSllNqXmU8kon5EFGXm
+KIBDiCgMYIbrupc7NXWNzpqPY/iyLVG/GUfttwLXTFiJmVM24d7bN+KPl63FKcMrkO1tbMefaTO1
+/qTZdQSdWhvM7NP86OgbgUQ2y+TwPKRexD7iyG6Kx+NvWuyE1LVtYeZXO9jKLf6dIh6P13qedygz
+38/M26S5CMCZjuPMjUQiPw902S1IuL7CcZw7iOjXAI4mop5BPgdAS7DRRv89G/HEdVVY8VAZ7vj1
+BpxzTAxHDa3F6CGf46zRLm4ZvwmLZi7Dm1MrccjgumD3ANg2FZ2FQeoFlGTy9AX95Xd7oP1rBzM/
+JLsjRGjOFSF51DaFRLRFftcZY07uYPt728CdQDwe32SMudgY04OIBjLzJGbeIqmFa4P8uwqt9UGS
+4yFmnsrMEdd1u7quO5iI2qJNpASHW+0GG+OO246FM5bh1EMNnC9xaQ8ZXIc3bq/ELeM3oaP8MDG8
+XTFTgiVIvYAuSqnzgsTCwkIF4Cw5XBAgf+3Izc19DECzPNzxIjjsOM7DNh8zL5TdEUop27zsFrTW
+12it50Wj0WEAOBaLVRlj7vGjJwDttMKXIBxsAGC7AtP9SBNALoA9LBoc6kDjTD69GjMvX4+8nM4r
+CYeA3575Ge6dvA6USdCId9mUNDc3PyO2HET0N6XUX6LR6MlKqZ9orS/NysqaT0TdmLnB87z77b7J
+ZDJkHQbFue04FArZfJDEGoja30V1dXUMgL+kcQWAvZh53vbt29fafER0v0ySHCJ6VSKdQUqpUVrr
+qyQys8f3ryd4nT72BHA4Mx9v9QsBOET2V/iMzJxl7aeNx8w18jtaKTWyqKhob6XUab179w4zc8Ji
+PSsajfbUWo9RSs0H0Ef6pZ5NyZCTqzY07u+regDAiSNq8PQfV2d++QAWLE1i7uIkzjstBz27Zb7P
+Gx/pgzue8RdoU9grd+WWjcte2tWZgWg0erLnef8goi5BGlI3U0dE59jrWLLKfR+AQmlqYeZ5xphj
+lFJ/JKIrARRL/wQRPS3neNCy6Sw+ylm28xmJRE5wHOc1/5iZJ0heJw2BhF07MPMhxphFSqkqItrb
+SubVA9jqOM5JsVhsDVJjTQcwSbq6ALYA6AFAC/9PjDGLtNYLJEudK2M1ENGzruuOl3GuAvAX6zJ8
+nEZEizzPWyO5pzYwc7Wslh8FoBVAZUj16D8hnuze9jK75LXipT+vRkF+hxYMDzydxNLKHAzu76FP
+z8yCc9j+dZgzV8PUtQk/Itnbqmu2rpmRxtgJ7NixoyovL282EX0uPlkDgK0Aypj5USK6wHXdtDxP
+bm5ukSTcPpTtIwCViURibpcuXXoCiPs0IloKoIKI1hBRttXnQyKqBDAvkUj4ITQaGxs/DofDXYho
+CYBF2dnZMxoaGtpp7kQi8UFeXt6/iAjM3EpEcWauBDCHma+Kx+MLAVB+fn6JmGT/nGVEVAXgnUQi
+UQcAOTk5Kx3HqQZQy8xMRNnMvBHA062trRfU1NQsB4BwONyfiJZZY5Uy87JEIvGhXNOi/Pz8BgD5
+EnGWAniQiF6JxWLV4XD4XQDdiKiFmVcD+HsymRwfCoVWC/9iZl5FA3587FtViQOP8W920mnVmHJB
+Wo6pHV54bz8MHTUR21dfihFDvhCMIB5/uysm3vnFqn6/cPmideWvj0pj+gHfSTg51FhtN/zqmLaJ
+lRFbY4zX392IV155FZ9sHwDeiat72uEu8nO/8JGyqSntXD/guwsnJ7RjnUMps9StuAX7lXSca0m2
+AtMf74qhB46GawyeeH4z3lnQTkO3IT/Xw8H7pkJ0AiPPaUirDdldKKUOjkajJ/tb37598wL006VY
+aS+7/Qd8fXDgeRX5Turl7tPHdqrb4/3FSby/8GM8+eSTePvtt+G6LqY92IQdiY7VziAZM89pgINk
+RZC+m3iEmV/2t7q6urb0fzQaPYmI5hDRNCLa1YKuXgB+D+BVAFUAYrI0MR/ADADH7STq+V7BycnJ
++WCPUJwBoKhLxw4xALz2XguikS8ChJtvvhk9evXDW/M7jrL9MQuy4nAcZ16Qvps4j5nbVr0D8KOo
+4P7OEAJwE4D1AG4HcKIkFbWk+A8BcBmANyTR972Hs2jRoq0FIbMQAJpaOp5M8xYnsbAs2Zbc69Wr
+Fw466CDU1xlsdzvO9TTKmAUhd/lHH330tZgqY8yHjuO0rVzbiMVizzHzbcz8lOM45wfpGeBnfW+U
+RBckepgDYLrQUtX5KXzZ+tP3Ag4AFITMw/lOHTZsybwc9GmsJxavPQrRCKFeXKCsrCzMnTsXDtfi
+qFEdrQQAn2zJRZ6zA0Wh7e3yHN8Qmo0xfzDGnB2Lxd4LEjNgIoC28gYALwPYG8CZUi03DsDIwMr6
+9x4EAMOHD8+PNffasKl5cNd1jy1F16J0h7exCfj4U2BxeTMefKYpjXb8Edm47tI037QNHgMDxw1D
+dsP62m45n/ZdsmRJbZCnMygqKipxHOdYx3EiAKqZ+V3HcU5k5llIJah6G2M2S/FW2+cszFxvjFmU
+Nlg6sgF8YqXrVwMYCqAxwAcAawAMAPCm+DpBDABwgmRYmwEsFyGsFzqJMPq2vgXA85LKP0mKp0KS
+V3mugwXbHABHAzgQQESuczWA18Ufg+Rn2lb0LTQDeEH2TwcQzKO8JeuCYbm/AyRB2iLJxrlybYCd
+0Rw6fMS1qxoOnnLrxdtx8Slb20azsXmrh19e0ZDWNqDEwQNTMiZ08cGKAoz5w4+wb3j+reWli68P
+0jsDKXn8b3moPloBrPLrWXzBkTrjNRZfheu6P7aOgzgKwDvW8UQAs6xjGwMk7d8szrKPPL9aL0OG
+eKsIy/vS91OL5gG4VjZltQPAPwGcGmg7HsADgbIKHwnx0aaKYL0dZJBsc1RW1GuCRFnhb5Fz7xkk
+Cu4FcCnsCMFraZrRM2f9p/e82AMtyeD9p7A11j56au44Gsedz/ZCz+x127Icb2qQ1hkopcaJ7xGS
+VeA7AdzFzJ9kKoLKzs7ezMzjJEXeGQTrezI9cB9VAP4dEBoAuB/ABSI0rZKx3SK07qJVioX2hAge
+5NlPzSA0ADAmcG2Hywv1heZzuQ7/PsPi1F8qmifowJcC8CsEQwCut4QnAeBWABtk0vhCsxzATAkI
+fFwC4CDYglNRUdGgsrdOqtleizvnpK8x+fh4U/uoK9HYXpgA4NVFESwoTUJlbfnd7pooANfJb418
+kfhb13WvNMbsIzWwaaiurt5hjHkUwMogrQPYnwWxmK1dwXAAv7KOz5GZuw+Az6QtCmCsCNM5AGzT
+uU40UgGA4HdG9mc+d1glJasB9ANwmPhith93k9z7eHnxPvYQbQExR09bBfRPiiC58kVFlTzvsyWS
+PBGAvZQwAsGcxJIlS17onbv6gTueiuDt0mBhPrCiqr1/GK9lJAPyVLU5D5dP74U+OaueKi396LF0
+audQXFzcl4gGImWKnjDG2Go+aRVUfRUEVWvweJTM9EzbBAA/s3jrpeouV16AXXppaw97pr0t0Vs9
+gA8CvpXvOPYR59zHXZY/0ySRn4+uci4OmNwBAOyvCiZY9+rztYpmGyj+ky94bJ0PIuTtk1mRwpxJ
+e2Utn3/u/5TgtQ8jabSyyvb+WksSqNrwheRUrM/HmOsGoKilcqnj1V2YxrwLCIVC/fx9x3FSn1V8
+/XCtfcrgPxwujmambbBVQAaZ1Q2i+hMA7Iq8zpbmtlfpKe1lI60gXzSEjb7yO1uuw8d4+c2y9isC
+GhBiOk8FcLlosLsAtMvAtxOc9957rzHLc0/p6SwrPefPJfj9rL6obQihto7h1mQ2S+UrW9HcQrj7
+uZ447up9kL9jZWWu555YUVGR7knvAqS+FUhpnI7XQb4a7PwMAPxX4PhZMQmnBdrHiXoPRiaetbVa
+m+/X7A6COZKgVxkUNl+T1IhJ8nGW+EInSIYc4p/ZuFZM7IsA7hb/crKY2zS0ExwAWLZsWTyP3aP7
+5S35999f3gODzx+Gm2aX4DcX9cKsKYV44q4ueGxaF8yaUoBJF3XHwo9LcMBFQ/Gnh6PoEypbmE+x
+IysqKvy62N0CM9tC19kZu6v4t6h7H5cHorcN4oQG/+1huwiDfY818pJzMmznWny7iuCqc7CeKfj5
+tm3SbXNVJBPgAjneAcB2Iw6T2iFfUO8WzToqwwTLLDgAUF5eXpMfajhuYHjJX3OaP/Puf7UHzp82
+GMMvG4nhl43EyMkjMWLSwRg/7QA88EYfNNVu54HhxTNb6jcdWVZW9pVrf5m5TQUzc6av/voEG3YD
+NQDsxOSBEvJmKqvMBLtUtVhejK11PJmtmVV151AhL9lH2791CE629usCQr4gYNqusvifCYTl9jNO
+ALgSwCtiytppzA4FBylnuaW8dOHVfXJXHTkgvGR5l1AqOKpPhFC3IwSPgfxQHfqHS9eUhFcdV1G6
+8LK1a9emZwh3E5LQK0fKbP1ca32OUqqwuLh4iFLqUVGhXweuk+jGx3hZs5oF4AYAf5LZlwnPW6E3
+ADwuvsUtAP5XHPhPZM0L4j8UWPzFADInwVKObq68RLuofbxohhPk+i63aDMDDjYDuM86HmZFZ8F8
+ld0vLCH6ODFbQy1adwD5wSiiQ4wePTqrrq5uQk2y+/XbWvbqyyB0zd64WWVtm9LYuOP+ysrKdlL5
+VSElmi8HzAeQ0kLvWn8EUMHMdzDzNqnSHyUfjrUAWMTM04wxaV9fBrCnvPTRQUIHOFGytQBwpERZ
+aeWWAUySrG3bR4AWWkVAPNEYtiCtBjBIhO1fYjY6wivyzXhw4hYD2CwZZR8rAuE+JJpanuFLEhZT
+ZefN1ndacHyIAI1l5pympqbHvwmBsSEf7t/AzEOJqJWZy5l5Zl5e3j+bm5uf8/mY+WkiciVJlQbP
+8x6Kx+O2o5gJBOBYiYZGiinsIi/CBfCxlHe+Jtlm2/yUAPgdgJ9IBELyshbLjH1eVuozpSZYfIlW
+ES57/eZTAH5kmiOZ7bEA9hVBjUtyb7bkYzoyiTeID+PjUUlGBvFTiaQGiXlcLElXF4D9r1xb/g+u
+Jh47NQ6dPQAAAABJRU5ErkJggg==
+
+--=-GpWja8lsO0RDkw/+p27brg==--
